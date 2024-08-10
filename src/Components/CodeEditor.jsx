@@ -5,7 +5,7 @@ import Editor from "@monaco-editor/react";
 
 export default function CodeEditor() {
   const [language, setLanguage] = useState("javascript");
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState("console.log('Hello World')");
 
   const handleLanguageChange = (e) => {
     setLanguage(e.target.value);
@@ -26,11 +26,11 @@ export default function CodeEditor() {
   };
 
   return (
-    <div>
-      <div style={{ marginBottom: "10px" }}>
+    <div className=" w-1/2 my-4">
+      <div className="mb-4">
         <label htmlFor="language-select">Choose Language: </label>
         <select
-          className="bg-blue-500 rounded-md px-2"
+          className="bg-orange-500 rounded-md px-2 py-2 hover:bg-orange-600 duration-75 appearance-none focus:ring-2 focus:outline-none focus:ring-orange-700 text-center"
           id="language-select"
           value={language}
           onChange={handleLanguageChange}

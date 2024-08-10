@@ -15,19 +15,14 @@ export default function Home() {
         </div>
         <button>Sign In</button>
       </nav>
-      <div className="hero w-full h-screen flex itmes-center justify-center flex-col ">
-        <input
-          className="bg-transparent w-1/2 h-44 border-1 border"
-          type="text"
-        />
-        <div>
-          <button>Copy Link</button>
-          <button>timer</button>
-        </div>
-        <div>
-          <h1>Welcome to the Code Editor Example</h1>
-          <CodeEditor />
-        </div>
+      <div className="Code-editor flex flex-col justify-center items-center w-full min-h-screen border border-1">
+        <h1 className="text-7xl ">
+          Welcome to{" "}
+          <span className="bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 text-transparent bg-clip-text font-bold ">
+            Paste Bin{" "}
+          </span>
+        </h1>
+        <CodeEditor />
       </div>
     </div>
   );
