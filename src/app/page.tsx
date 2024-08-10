@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CodeEditor from "../Components/CodeEditor";
+import CodeEditor from "@/Components/CodeEditor";
 export default function Home() {
   return (
     <div>
