@@ -1,4 +1,4 @@
-"use client"; // Ensures client-side rendering
+"use client";
 
 import React, { useState } from "react";
 import Editor from "@monaco-editor/react";
@@ -26,7 +26,7 @@ export default function CodeEditor() {
   };
 
   return (
-    <div className=" w-1/2 my-4">
+    <div className=" w-1/2 my-1">
       <div className="mb-4">
         <label htmlFor="language-select">Choose Language: </label>
         <select
