@@ -1,32 +1,38 @@
-"use client";
+// src/Components/CodeEditor.tsx
 
 import React, { useState } from "react";
 import Editor from "@monaco-editor/react";
 
-export default function CodeEditor() {
+interface CodeEditorProps {
+  value: string;
+  onChange: (value: string | undefined) => void;
+  readOnly?: boolean;
+}
+
+export default function CodeEditor({
+  value,
+  onChange,
+  readOnly,
+}: CodeEditorProps) {
   const [language, setLanguage] = useState("javascript");
-  const [code, setCode] = useState("console.log('Hello World')");
 
-  const handleLanguageChange = (e) => {
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setLanguage(e.target.value);
-  };
-
-  const handleEditorChange = (value) => {
-    setCode(value);
   };
 
   const options = {
     selectOnLineNumbers: true,
     automaticLayout: true,
-    wordWrap: "on",
+    wordWrap: "on" as "on" | "off" | "wordWrapColumn" | "bounded" | undefined,
     minimap: { enabled: false },
     autoClosingBrackets: "always",
     suggestOnTriggerCharacters: true,
     autoIndent: "full",
+    readOnly: readOnly || false,
   };
 
   return (
-    <div className=" w-1/2 my-1">
+    <div className="w-1/2 my-1">
       <div className="mb-4">
         <label htmlFor="language-select">Choose Language: </label>
         <select
@@ -47,8 +53,8 @@ export default function CodeEditor() {
       <Editor
         height="60vh"
         language={language}
-        value={code}
-        onChange={handleEditorChange}
+        value={value}
+        onChange={onChange}
         theme="vs-dark"
         options={options}
       />

@@ -1,20 +1,36 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import CodeEditor from "@/Components/CodeEditor";
 import TimerButton from "@/Components/TimerButton";
+import axios from "axios";
 
 export default function Home() {
+  const [code, setCode] = useState("");
   const router = useRouter();
 
   const handleLoginClick = () => {
     router.push("/login");
   };
 
+  const handleCopyLink = async () => {
+    try {
+      const response = await axios.post("/api/saveCode", { code });
+      const { uniqueId } = response.data;
+      const link = `${window.location.origin}/code/${uniqueId}`;
+
+      navigator.clipboard.writeText(link);
+      alert("Link copied to clipboard!");
+    } catch (error) {
+      console.error("Failed to generate link", error);
+    }
+  };
+
   return (
     <div>
       <nav className="w-full flex justify-between items-center h-14 px-5 shadow">
         <h1>
-          <img src="" alt="" />
+          <img src="" alt="Logo" />
           Logo
         </h1>
         <div className="flex justify-between items-center gap-4">
@@ -31,9 +47,12 @@ export default function Home() {
             Paste Bin
           </span>
         </h1>
-        <CodeEditor />
+        <CodeEditor value={code} onChange={setCode} />
         <div className="btn flex gap-1">
-          <button className="px-5 py-2 bg-red-500 rounded border-none mx-2">
+          <button
+            onClick={handleCopyLink}
+            className="px-5 py-2 bg-red-500 rounded border-none mx-2"
+          >
             Copy Link
           </button>
           <TimerButton />
