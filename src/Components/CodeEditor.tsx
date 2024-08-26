@@ -45,7 +45,7 @@ export default function CodeEditor({
       <div className="mb-4">
         <label htmlFor="language-select">Choose Language: </label>
         <select
-          className="bg-orange-500 rounded-md px-2 py-2 hover:bg-orange-600 duration-75 appearance-none focus:ring-2 focus:outline-none focus:ring-orange-700 text-center"
+          className="bg-orange-500 rounded-xl px-2 py-2 hover:bg-orange-600 duration-75 appearance-none focus:ring-2 focus:outline-none focus:ring-orange-700 text-center"
           id="language-select"
           value={language}
           onChange={handleLanguageChange}
@@ -61,6 +61,7 @@ export default function CodeEditor({
       </div>
       <Editor
         height="60vh"
+        width="50vw"
         language={language}
         value={value}
         onChange={onChange}
