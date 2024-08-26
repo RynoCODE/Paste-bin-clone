@@ -6,6 +6,14 @@ import Navbar from "@/Components/Navbar";
 
 export default function Home() {
   const [code, setCode] = useState("");
+
+  const handleCodeChange = (value: string | undefined) => {
+
+    if (value !== undefined) {
+      setCode(value);
+    }
+  };
+
   const handleCopyLink = async () => {
     try {
       const response = await axios.post("/api/saveCode", { code });
@@ -29,7 +37,7 @@ export default function Home() {
             UniCode
           </span>
         </h1>
-        <CodeEditor value={code} onChange={setCode} />
+        <CodeEditor value={code} onChange={handleCodeChange} />
         <div className="btn flex gap-1">
           <button
             onClick={handleCopyLink}

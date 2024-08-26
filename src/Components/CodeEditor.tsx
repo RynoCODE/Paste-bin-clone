@@ -1,7 +1,5 @@
-// src/Components/CodeEditor.tsx
-
 import React, { useState } from "react";
-import Editor from "@monaco-editor/react";
+import Editor, { loader } from "@monaco-editor/react";
 
 interface CodeEditorProps {
   value: string;
@@ -25,9 +23,20 @@ export default function CodeEditor({
     automaticLayout: true,
     wordWrap: "on" as "on" | "off" | "wordWrapColumn" | "bounded" | undefined,
     minimap: { enabled: false },
-    autoClosingBrackets: "always",
+    autoClosingBrackets: "always" as
+      | "always"
+      | "languageDefined"
+      | "beforeWhitespace"
+      | "never"
+      | undefined,
     suggestOnTriggerCharacters: true,
-    autoIndent: "full",
+    autoIndent: "full" as
+      | "none"
+      | "keep"
+      | "brackets"
+      | "advanced"
+      | "full"
+      | undefined,
     readOnly: readOnly || false,
   };
 
