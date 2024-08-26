@@ -1,26 +1,15 @@
-"use client"
-import React from 'react'
-import { useRouter } from 'next/navigation'
+"use client";
+import React from "react";
 
 const Navbar = () => {
-    const router = useRouter();
-    const handleLoginClick = () => {
-        router.push("/login");
-    };
-    return (
-        <nav className="w-full flex justify-between items-center h-14 px-5 shadow">
-            <h1>
-            <img src="" alt="Logo" />
-            Logo
-            </h1>
-            <div className="flex justify-between items-center gap-4">
-            <a href="">Home</a>
-            <a href="">About</a>
-            <a href="">Contribute</a>
-            </div>
-            <button onClick={handleLoginClick}>Sign In</button>
-        </nav>
-    )
-}
+  return (
+    <nav className="w-full flex justify-between items-center h-14 px-5 shadow">
+      <h1 className="text-xl font-extrabold">UniCode</h1>
+      <div className="flex justify-between items-center gap-4">
+        <a href="https://github.com/RynoCODE/Paste-bin-clone">Contribute</a>
+      </div>
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;
